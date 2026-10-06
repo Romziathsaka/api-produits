@@ -1,0 +1,8 @@
+{
+  "compilerOptions": {
+    "module": "NodeNext",
+    "strict": true,
+    "rootDir": "src",
+    "outDir": "dist"
+  },
+}

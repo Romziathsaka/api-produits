@@ -1,0 +1,108 @@
+### Vérifier que l'API fonctionne
+GET http://localhost:3000/api/health
+
+### Obtenir tous les produits
+GET http://localhost:3000/api/produits
+
+### Obtenir le produit 1
+GET http://localhost:3000/api/produits/1
+
+### Créer un produit
+POST http://localhost:3000/api/produits
+Content-Type: application/json
+
+{
+  "nom": "Casque",
+  "prix": 50,
+  "stock": 20,
+  "categorie": "Accessoires"
+}
+### Tester une création invalide
+POST http://localhost:3000/api/produits
+Content-Type: application/json
+
+{
+  "nom": "",
+  "prix": -10,
+  "stock": -2,
+  "categorie": ""
+}
+### Modifier complètement le produit 1
+PUT http://localhost:3000/api/produits/1
+Content-Type: application/json
+
+{
+  "nom": "Laptop",
+  "prix": 1200,
+  "stock": 10,
+  "categorie": "Informatique"
+}
+### Supprimer le produit 5
+DELETE http://localhost:3000/api/produits/5
+
+### Produit inexistant
+GET http://localhost:3000/api/produits/999
+
+### Identifiant invalide
+GET http://localhost:3000/api/produits/abc
+
+### Supprimer un produit inexistant
+DELETE http://localhost:3000/api/produits/999
+
+### Modifier un produit inexistant
+PUT http://localhost:3000/api/produits/999
+Content-Type: application/json
+
+{
+  "nom": "Test",
+  "prix": 10,
+  "stock": 5,
+  "categorie": "Test"
+}
+### Cache - première requête
+GET http://localhost:3000/api/produits
+
+### Cache - deuxième requête
+GET http://localhost:3000/api/produits
+### Produit invalide - prix négatif
+POST http://localhost:3000/api/produits
+Content-Type: application/json
+
+{
+  "nom": "Test",
+  "prix": -10,
+  "stock": 5,
+  "categorie": "Test"
+}
+
+### Produit invalide - stock négatif
+POST http://localhost:3000/api/produits
+Content-Type: application/json
+
+{
+  "nom": "Test",
+  "prix": 20,
+  "stock": -5,
+  "categorie": "Test"
+}
+### Modifier avec un identifiant invalide
+PUT http://localhost:3000/api/produits/abc
+Content-Type: application/json
+
+{
+  "nom": "Test",
+  "prix": 20,
+  "stock": 5,
+  "categorie": "Test"
+}
+
+### Modifier un produit avec des données invalides
+PUT http://localhost:3000/api/produits/1
+Content-Type: application/json
+
+{
+  "nom": "",
+  "prix": -5,
+  "stock": -1,
+  "categorie": ""
+}
